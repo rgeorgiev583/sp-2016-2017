@@ -37,8 +37,11 @@ int main(int argc, char** argv)
             exit(0);
 
         pid_t pid = fork();
-        if (!pid)
-            execvp(cmd_argv[0], cmd_argv);
+        if (!pid && execvp(cmd_argv[0], cmd_argv) < 0)
+        {
+            printf("error: command `%s` does not exist\n", cmd_argv[0]);
+            exit(0);
+        }
         else
         {
             int status;
