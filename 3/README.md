@@ -6,7 +6,7 @@
 ## Синтаксис
 
 	#include <unistd.h>
-    
+
     off_t lseek(int fd, off_t offset, int whence);
 
 
@@ -42,20 +42,8 @@
 * **Пример 1.**
 
 		$ echo 'bar baz' > foo  # добавя нов ред след `bar baz`
-        $ cat > write.c
-        #include <unistd.h>
-        #include <fcntl.h>
-
-        int main()
-        {
-            int fd = open("foo", O_WRONLY);
-            lseek(fd, 0, SEEK_END);  // премества офсета на позицията на първия байт след края на файла
-            char str[] = "quux";  // завършва с терминиращ нулев байт
-            write(fd, str, sizeof(str));
-            return 0;
-        }
-        $ cc write.c
-        $ ./a.out
+        $ make write-ate
+        $ ./write-ate
         $ cat foo
         bar baz
         quux
@@ -65,23 +53,12 @@
 * **Пример 2.**
 
 		$ echo 'bar baz' > foo  # добавя нов ред след `bar baz`
-        $ cat > write.c
-        #include <unistd.h>
-        #include <fcntl.h>
-
-        int main()
-        {
-            int fd = open("foo", O_WRONLY);
-            lseek(fd, 5, SEEK_END);  // премества офсета на позицията на шестия байт след края на файла
-            char str[] = "quux";  // завършва с терминиращ нулев байт
-            write(fd, str, sizeof(str));
-            return 0;
-        }
-        $ cc write.c
+        $ make write-ate-5
+        $ ./write-ate-5
         $ ./a.out
         $ cat foo
         bar baz
         quux
         $ xxd foo
 		00000000: 6261 7220 6261 7a0a 0000 0000 0071 7575  bar baz......quu
-		00000010: 7800                                     x. 
+		00000010: 7800                                     x.
