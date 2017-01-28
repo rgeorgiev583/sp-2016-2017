@@ -42,23 +42,28 @@
 * **Пример 1.**
 
 		$ echo 'bar baz' > foo  # добавя нов ред след `bar baz`
+        $ cat foo
+        bar baz
         $ make write-ate
-        $ ./write-ate
+        cc -pedantic -Wall -O3 write-ate.c -o write-ate
+        $ ./write-ate foo quux
         $ cat foo
         bar baz
         quux
         $ xxd foo
-        00000000: 6261 7220 6261 7a0a 7175 7578 00         bar baz.quux.
+        00000000: 6261 7220 6261 7a0a 7175 7578            bar baz.quux
 
 * **Пример 2.**
 
 		$ echo 'bar baz' > foo  # добавя нов ред след `bar baz`
-        $ make write-ate-5
-        $ ./write-ate-5
-        $ ./a.out
+        $ cat foo
+        bar baz
+        $ make write-ate-var
+        cc -pedantic -Wall -O3 write-ate-var.c -o write-ate-var
+        $ ./write-ate-var foo quux 5
         $ cat foo
         bar baz
         quux
         $ xxd foo
-		00000000: 6261 7220 6261 7a0a 0000 0000 0071 7575  bar baz......quu
-		00000010: 7800                                     x.
+        00000000: 6261 7220 6261 7a0a 0000 0000 0071 7575  bar baz......quu
+		00000010: 78                                       x
