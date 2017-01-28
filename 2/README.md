@@ -1,1 +1,1 @@
-# `open`, `read`, `write`, `close`
+# `open`, `creat`, `read`, `write`, `close`
