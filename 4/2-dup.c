@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 
     char buf[BUF_SIZE];
     int len;
-    while (len = read(0, buf, BUF_SIZE))
+    while ((len = read(0, buf, BUF_SIZE)))
         write(1, buf, len);
     return 0;
 }
