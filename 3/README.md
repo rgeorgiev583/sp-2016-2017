@@ -1,13 +1,13 @@
-# `lseek`
+# `lseek(2)`
 
 Това системно извикване се използва за seek-ване (т.е. отиване на позиция) в отворен файл.
 
 
 ## Синтаксис
 
-	#include <unistd.h>
+		#include <unistd.h>
 
-    off_t lseek(int fd, off_t offset, int whence);
+    	off_t lseek(int fd, off_t offset, int whence);
 
 
 ## Семантика
