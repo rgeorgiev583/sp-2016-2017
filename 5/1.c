@@ -4,5 +4,5 @@
 int main(int argc, char** argv)
 {
     argv[0] = "cat";
-    execvp("cat", argv);
+    execvp(argv[0], argv);
 }
