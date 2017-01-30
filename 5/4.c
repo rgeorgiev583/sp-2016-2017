@@ -13,7 +13,5 @@ int main(int argc, char** argv)
     else if (!strcmp(argv[1], "lines"))
         argv[1] = "-l";
 
-    printf("%s", argv[0]);
-    printf("%s", argv[1]);
     execvp(argv[0], argv);
 }
