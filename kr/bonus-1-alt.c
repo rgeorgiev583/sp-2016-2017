@@ -4,8 +4,6 @@
 #include <sys/types.h>
 
 
-// За да реша задачата, директно преизползвах изходния код на решението на задача 4.1.
-
 int main(int argc, char** argv)
 {
     int fds1[2];
@@ -54,7 +52,7 @@ int main(int argc, char** argv)
         close(1);
         dup(fds3[1]);
 
-        execlp("uniq", "uniq", NULL);
+        execlp("awk", "awk", "{ print $1 }", NULL);
     }
 
     close(fds2[0]);
