@@ -10,9 +10,12 @@ int main(int argc, char** argv)
     if (argc < 4)
         return 1;
 
+    // взимаме стойността на самото число, въведено като аргумент
     int n = atoi(argv[1]);
     int fd1 = open(argv[2], O_WRONLY, 0644);
     int fd2 = open(argv[3], O_RDONLY);
+
+    // отиваме `n` байта след края на файла
     lseek(fd1, n, SEEK_END);
 
     int len;
