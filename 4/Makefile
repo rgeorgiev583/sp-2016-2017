@@ -3,7 +3,7 @@ RM := rm -f
 SRC := $(wildcard *.c)
 BIN := $(patsubst %.c,%,$(SRC))
 
-CFLAGS += -pedantic -Wall
+CFLAGS += -std=c11 -pedantic -Wall
 ifdef DEBUG
 CFLAGS += -g -Og
 else
