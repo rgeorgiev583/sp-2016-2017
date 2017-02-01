@@ -7,7 +7,7 @@ CFLAGS += -std=c11
 ifdef DEBUG
 CFLAGS += -g -Og
 else
-CFLAGS += -O3
+CFLAGS += -g
 endif
 
 .PHONY: all clean
