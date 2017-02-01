@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1485949030 source:c:\users\nooby\desktop\code_blocks_projects\zada4a_1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<sys/types.h>
+	<unistd.h>
+	<fcntl.h>
+
