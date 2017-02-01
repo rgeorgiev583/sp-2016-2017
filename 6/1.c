@@ -5,6 +5,7 @@
 
 #define BUFSIZE 1000
 
+
 void catwc(const char* arg)
 {
     pid_t pid = fork();
@@ -27,7 +28,7 @@ int main(int argc, char** argv)
         int fd = creat("/tmp/catwc", 0x644);
         ssize_t len;
 
-        while (len = read(0, buf, BUFSIZE))
+        while ((len = read(0, buf, BUFSIZE)))
             write(fd, buf, len);
 
         close(fd);
