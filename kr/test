@@ -2,6 +2,8 @@
 
 echo 'preparing...'
 
+[ $# -eq 0 ] && set 1 2 3 4-1 4-2
+
 err=0
 
 compare()
@@ -20,21 +22,21 @@ echo 'dafuq' > wat
 echo 'quux abc' > baz
 
 echo 'testing first task... '
-./1 5 foo wat
+./$1 5 foo wat
 compare 1 foo
 
 echo 'testing second task... '
-./2 abc ghi foo 2.out
+./$2 abc ghi foo 2.out
 compare 2 2.out
 
 echo 'testing third task... '
-./3 abc ghi foo baz > 3.out
+./$3 abc ghi foo baz > 3.out
 compare 3 3.out
 
 echo 'testing fourth task, first subtask... '
-./4-1 Control mosquito > 4-1.out
+./$4 Control mosquito > 4-1.out
 compare 4-1 4-1.out
 
 echo 'testing fourth task, second subtask... '
-./4-2 grep end sort -r wc -l < mosquito > 4-2.out
+./$5 grep end sort -r wc -l < mosquito > 4-2.out
 compare 4-2 4-2.out
