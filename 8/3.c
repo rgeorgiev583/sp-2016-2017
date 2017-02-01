@@ -1,35 +1,46 @@
 #include <unistd.h>
 
+
 int main(int argc, char** argv)
 {
-    int fd[2];
-    pipe(fd);
+    int fds1[2];
+    pipe(fds1);
 
     if (!fork())
     {
+        close(fds1[0]);
+
         close(1);
-        close(fd[0]);
-        dup(fd[1]);
+        dup(fds1[1]);
+
+        argv[2] = argv[1];
         argv[1] = "head";
-        execvp("head", argv + 1);
+        execvp(argv[1], argv + 1);
     }
-    else
+
+    close(fds1[1]);
+
+    int fds2[2];
+    pipe(fds2);
+
+    if (!fork())
     {
-        int fd2[2];
-        pipe(fd2);
+        close(fds2[0]);
 
-        if (!fork())
-        {
-            close(0);
-            close(fd2[1]);
-            dup(fd2);
-            execlp("grep", argv[2], NULL);
-        }
         close(0);
-        close(fd[1]);
-        dup(fd[0]);
-        execlp("wc", "wc", "-l", NULL);
+        dup(fds1[0]);
+        close(1);
+        dup(fds2[1]);
+
+        execlp("grep", "grep", argv[2], NULL);
     }
 
-    return 0;
+    close(fds1[0]);
+
+    close(fds2[1]);
+
+    close(0);
+    dup(fds2[0]);
+
+    execlp("wc", "wc", "-l", NULL);
 }
