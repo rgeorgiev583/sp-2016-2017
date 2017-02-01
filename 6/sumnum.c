@@ -20,7 +20,7 @@ int main(int argc, char** argv)
             int fd_read = open(i_str, O_RDONLY);
             char i_sum_str[MAX_LEN];
             sprintf(i_sum_str, "%d.sum", i);
-            int fd_write = open(i_sum_str, O_CREAT | O_TRUNC | O_WRONLY, 0x644);
+            int fd_write = creat(i_sum_str, 0644);
             int sum = 0;
 
             for (int i = 0; i < count_num; i++)

@@ -24,7 +24,7 @@ int main(int argc, char** argv)
     if (argc == 1)
     {
         char buf[BUFSIZE];
-        int fd = open("/tmp/catwc", O_WRONLY | O_CREAT | O_TRUNC, 0x644);
+        int fd = creat("/tmp/catwc", 0x644);
         ssize_t len;
 
         while (len = read(0, buf, BUFSIZE))
