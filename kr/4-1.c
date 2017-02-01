@@ -52,6 +52,8 @@ int main(int argc, char** argv)
         execlp("uniq", "uniq", NULL);
     }
 
+    close(fds2[0]);
+
     close(fds3[1]);
 
     close(0);
