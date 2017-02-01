@@ -10,12 +10,18 @@ else
 CFLAGS += -g
 endif
 
-.PHONY: all clean
+.PHONY: all test testclean clean
 
 all: $(BIN)
 
 %: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
-clean:
+test: all
+	./test
+
+testclean:
+	$(RM) foo bar baz wat *.out
+
+clean: testclean
 	$(RM) $(BIN)
