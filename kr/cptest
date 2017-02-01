@@ -1,0 +1,8 @@
+#!/bin/sh
+
+[ $# -eq 0 ] && exit 1
+
+for file in Makefile test *.orig mosquito
+do
+    cp -f $file $1
+done
