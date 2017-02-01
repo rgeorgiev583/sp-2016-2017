@@ -4,6 +4,7 @@
 
 #define BUFSIZE 1000
 
+
 int main(int argc, char** argv)
 {
     if (argc < 4)
@@ -16,7 +17,6 @@ int main(int argc, char** argv)
 
     int len;
     char buf[BUFSIZE];
-
     while ((len = read(fd2, buf, 1000)))
         write(fd1, buf, len);
 
