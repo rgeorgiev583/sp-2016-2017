@@ -2,7 +2,13 @@
 
 [ $# -eq 0 ] && exit 1
 
-for file in Makefile test *.orig mosquito
+for file in Makefile *.orig mosquito
 do
-    cp -f $file $1
+    cp -f "$file" "solutions/$1"
 done
+
+cd "solutions/$1" || exit 1
+
+echo 'bar baz' > foo
+echo 'dafuq' > wat
+echo 'quux abc' > baz
