@@ -14,8 +14,7 @@ int main(int argc, char** argv)
         close(fds1[0]);
 
         // пренасочваме стандартния изход към пишещия файлов дескриптор на канала за писане
-        close(1);
-        dup(fds1[1]);
+        dup2(fds1[1], 1);
 
         argv[0] = "grep";
         execvp(argv[0], argv);
@@ -35,11 +34,9 @@ int main(int argc, char** argv)
         close(fds2[0]);
 
         // пренасочваме стандартния вход от четящия файлов дескриптор на канала за четене
-        close(0);
-        dup(fds1[0]);
+        dup2(fds1[0], 0);
         // пренасочваме стандартния изход към пишещия файлов дескриптор на канала за писане
-        close(1);
-        dup(fds2[1]);
+        dup2(fds2[1], 1);
 
         execlp("sort", "sort", NULL);
     }
@@ -58,10 +55,8 @@ int main(int argc, char** argv)
     {
         close(fds3[0]);
 
-        close(0);
-        dup(fds2[0]);
-        close(1);
-        dup(fds3[1]);
+        dup2(fds2[0], 0);
+        dup2(fds3[1], 1);
 
         execlp("uniq", "uniq", NULL);
     }
@@ -74,8 +69,7 @@ int main(int argc, char** argv)
     close(fds3[1]);
 
     // пренасочваме стандартния вход от четящия файлов дескриптор на канала за четене
-    close(0);
-    dup(fds3[0]);
+    dup2(fds3[0], 0);
 
     execlp("wc", "wc", "-l", NULL);
 }
