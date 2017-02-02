@@ -9,11 +9,6 @@
 #include <signal.h>
 
 int main(int argc, char* argv[]) {
-        if (argc != 4) {
-                printf("Error: Insufficient parameters.\n");
-                return 1;
-        }
-
         int fd1 = open(argv[2], O_RDONLY);
         if(fd1 == -1) {
                 printf("Error: couldn't open first file.\n");

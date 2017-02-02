@@ -7,7 +7,7 @@ int main() {
     int fd1[2];
 	int fd2[2];
 	int fd3[2];
-    pipe(fd);
+    pipe(fd1);
     pipe(fd2);
     pipe(fd3);
 
@@ -37,6 +37,6 @@ int main() {
 	} else {
 		close(0);
         dup(fd3[0]);
-        execlp("wc", "wc","-l" NULL);
+        execlp("wc", "wc","-l", NULL);
 	}
 }

@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
     close(1);
     dup(d);
 
-    execlp("tr", argv[1], argv[2], (char*)NULL);
+    execlp("tr", "tr", argv[1], argv[2], NULL);
 
     return 0;
 }

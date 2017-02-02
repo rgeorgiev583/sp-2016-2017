@@ -4,7 +4,7 @@
 
 
 int main(int argc, char **argv){
-    while(int i = 1, i < argc ; i++){
+    for(int i = 1; i < argc ; i++){
         kill(atoi(argv[i]), SIGTERM);
     }
 }

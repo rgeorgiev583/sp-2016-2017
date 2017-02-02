@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
         dup(pd1[1]);
         close(pd1[0]);
         close(pd1[1]);
-        execlv("grep", &argv[1]);
+        execlp("grep", argv[1]);
     } else {
         pipe(pd2);
         if (!fork()) {

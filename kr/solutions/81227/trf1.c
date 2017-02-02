@@ -10,13 +10,11 @@ int main(int argc, char** argv)
 
     close(0);
     dup(stin);
-    close(stin);
 
     close(1);
     dup(stout);
-    close(stout);
 
-    execlp("tr", argv[1], argv[2], NULL);
+    execlp("tr", "tr", argv[1], argv[2], NULL);
 
     return 0;
 }

@@ -10,6 +10,6 @@ int main(int argc, char **argv){
 
     dup2(file, 0);
     dup2(dest, 1);
-    execlp("tr", argv[1], argv[2], NULL);
+    execlp("tr", "tr", argv[1], argv[2], NULL);
     return 0;
 }

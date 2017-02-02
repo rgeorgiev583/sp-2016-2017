@@ -8,6 +8,8 @@
 #include <sys/wait.h>
 #include <signal.h>
 
+#define BUFF_SIZE 1000
+
 int main(int argc, char** argv){
 	if (argc == 1) return 1;
 	for (int i = 2; i < argc; i++){
