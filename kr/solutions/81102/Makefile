@@ -1,5 +1,3 @@
-RM := rm -f
-
 SRC := $(wildcard *.c)
 BIN := $(patsubst %.c,%,$(SRC))
 
